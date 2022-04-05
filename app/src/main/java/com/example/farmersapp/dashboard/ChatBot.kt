@@ -1,4 +1,4 @@
-package com.example.farmersapp
+package com.example.farmersapp.dashboard
 
 import android.os.Bundle
 import android.util.Log
