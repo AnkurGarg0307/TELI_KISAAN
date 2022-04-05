@@ -10,12 +10,9 @@ import androidx.viewpager.widget.PagerAdapter
 
 class IntroViewPagerAdapter(var mContexts: Context, var mListScreens: List<ScreenItem>) : PagerAdapter() {
 
-    var mContext: Context
-    var mListScreen: List<ScreenItem>
-    init {
-        mContext = mContexts
-        mListScreen = mListScreens
-    }
+    var mContext: Context = mContexts
+    var mListScreen: List<ScreenItem> = mListScreens
+
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater: LayoutInflater =
             mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
