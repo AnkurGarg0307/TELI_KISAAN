@@ -17,7 +17,7 @@ class OpenScreen : AppCompatActivity() {
             startActivity(
                 Intent(
                     this,
-                    MainActivity::class.java
+                    IntroActivity::class.java
                 )
             )
             finish()
