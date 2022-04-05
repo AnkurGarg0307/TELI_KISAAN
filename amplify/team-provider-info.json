@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-telikisaan-staging-153641-authRole",
+      "UnauthRoleArn": "arn:aws:iam::662160328313:role/amplify-telikisaan-staging-153641-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::662160328313:role/amplify-telikisaan-staging-153641-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-telikisaan-staging-153641-deployment",
+      "UnauthRoleName": "amplify-telikisaan-staging-153641-unauthRole",
+      "StackName": "amplify-telikisaan-staging-153641",
+      "StackId": "arn:aws:cloudformation:us-east-1:662160328313:stack/amplify-telikisaan-staging-153641/dc0f57d0-b363-11ec-aa9e-0eda2d91998f",
+      "AmplifyAppId": "d2ccbi1xhowj21"
+    },
+    "categories": {
+      "auth": {
+        "undefined": {}
+      }
+    }
+  }
+}

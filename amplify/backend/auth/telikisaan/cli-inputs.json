@@ -1,0 +1,12 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "telikisaan_identitypool_05d9b6e0",
+    "allowUnauthenticatedIdentities": true,
+    "authSelections": "identityPoolOnly",
+    "resourceName": "telikisaan",
+    "sharedId": "05d9b6e0",
+    "serviceName": "Cognito",
+    "useDefault": "manual"
+  }
+}

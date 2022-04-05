@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         binding.schemaCard.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this,GovernmentSchemas::class.java))
         })
-
+        binding.chatBotCard.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this,ChatBot::class.java))
+        })
     }
 }
