@@ -1,4 +1,4 @@
-package com.example.farmersapp
+package com.example.farmersapp.models
 
 class ScreenItem(var mTitle: String, var mDescription: String, var mScreenImg: Int) {
     var Title: String

@@ -1,4 +1,4 @@
-package com.example.farmersapp
+package com.example.farmersapp.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
+import com.example.farmersapp.R
+import com.example.farmersapp.models.ScreenItem
 
 class IntroViewPagerAdapter(var mContexts: Context, var mListScreens: List<ScreenItem>) : PagerAdapter() {
 

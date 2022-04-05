@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersApp.action">
         <activity
-            android:name=".ChatBot"
+            android:name=".dashboard.ChatBot"
             android:exported="false" />
         <activity
-            android:name=".GovernmentSchemas"
+            android:name=".dashboard.GovernmentSchemas"
             android:exported="false"
             android:theme="@style/Theme.FarmersApp.action" />
         <activity

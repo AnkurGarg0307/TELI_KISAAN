@@ -1,8 +1,9 @@
-package com.example.farmersapp
+package com.example.farmersapp.dashboard
 
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
+import com.example.farmersapp.R
 
 
 class GovernmentSchemas : AppCompatActivity() {

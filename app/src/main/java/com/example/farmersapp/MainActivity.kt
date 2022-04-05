@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.farmersapp.dashboard.ChatBot
+import com.example.farmersapp.dashboard.GovernmentSchemas
 import com.example.farmersapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.schemaCard.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this,GovernmentSchemas::class.java))
+            startActivity(Intent(this, GovernmentSchemas::class.java))
         })
         binding.chatBotCard.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this,ChatBot::class.java))
+            startActivity(Intent(this, ChatBot::class.java))
         })
     }
 }
