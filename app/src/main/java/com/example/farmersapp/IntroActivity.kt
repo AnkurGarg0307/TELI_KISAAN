@@ -27,26 +27,38 @@ class IntroActivity : AppCompatActivity() {
 
         btnAnim = AnimationUtils.loadAnimation(applicationContext, R.anim.button_animation)
 
-        // fill list screen
         val mList: MutableList<ScreenItem> = ArrayList()
 
         //changed here
         mList.add(
             ScreenItem(
-                "Fresh Fruits",
-                "Sweets and pie will make you cry, Fruits and Vegetables give you the edge",
-                R.drawable.fruitsintro
+                "Crops Information",
+                "Details about crop prices , pesticides and fertilizers , harvesting time and more",
+                R.drawable.ic_crop_img
             )
         )
         mList.add(
             ScreenItem(
-                "Fresh Vegetables",
-                "Have fruits & vegetables if you want to lead a fruitful life",
-                R.drawable.vegintro
+                "Favourable Crops",
+                "Recommends best crops according to soil types , temperature and rainfall in an area",
+                R.drawable.crop_rec
             )
         )
-        mList.add(ScreenItem("Fast Delivery", "Extraordinary Service.", R.drawable.img2))
 
+        mList.add(
+            ScreenItem(
+                "Soil moisture level",
+                "Soil moisture is an important indicator in farming that helps to reduce water consumption.",
+                R.drawable.water_level
+            )
+        )
+        mList.add(
+            ScreenItem(
+                "Agriculture Policies",
+                "Information about important agriculture schemes introduced by the government",
+                R.drawable.schemes
+            )
+        )
 
         // setup viewpager
         introViewPagerAdapter = IntroViewPagerAdapter(this, mList)
@@ -57,8 +69,8 @@ class IntroActivity : AppCompatActivity() {
 
         // Get Started button click listener
         binding.btnGetStarted.setOnClickListener(View.OnClickListener {
-            val mainActivity = Intent(applicationContext, MainActivity::class.java)
-            startActivity(mainActivity)
+
+            startActivity( Intent(applicationContext, LoginActivity::class.java))
             savePrefsData()
             finish()
         })
@@ -109,11 +121,12 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun restorePrefData(): Boolean {
-        val pref = applicationContext.getSharedPreferences(
-            "myPrefs",
-            MODE_PRIVATE
-        )
-        return pref.getBoolean("isIntroOpened", false)
+//        val pref = applicationContext.getSharedPreferences(
+//            "myPrefs",
+//            MODE_PRIVATE
+//        )
+//        return pref.getBoolean("isIntroOpened", false)
+        return false
     }
 
     // show the GET STARTED Button and hide the indicator and the next button
@@ -129,8 +142,7 @@ class IntroActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (restorePrefData()) {
-            val mainActivity = Intent(applicationContext, MainActivity::class.java)
-            startActivity(mainActivity)
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }

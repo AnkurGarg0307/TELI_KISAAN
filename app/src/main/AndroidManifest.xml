@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersApp.action">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FarmersApp" />
+
+        <activity
             android:name=".dashboard.ChatBot"
             android:exported="false" />
         <activity
@@ -22,7 +27,6 @@
             android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/Theme.FarmersApp.action" />
-
         <activity
             android:name=".IntroActivity"
             android:exported="true"
@@ -31,14 +35,12 @@
             android:name=".OpenScreen"
             android:exported="true"
             android:theme="@style/Theme.FarmersApp">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
