@@ -1,12 +1,50 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "telikisaan_identitypool_05d9b6e0",
-    "allowUnauthenticatedIdentities": true,
-    "authSelections": "identityPoolOnly",
-    "resourceName": "telikisaan",
-    "sharedId": "05d9b6e0",
+    "identityPoolName": "testAuthIdentityPool",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "teliki2104acd0",
+    "userPoolName": "TeliKisaan",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [
+      "Requires Lowercase",
+      "Requires Numbers",
+      "Requires Symbols",
+      "Requires Uppercase"
+    ],
+    "requiredAttributes": [
+      "name"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [],
+    "userpoolClientReadAttributes": [],
+    "userpoolClientLambdaRole": "TeliKi2104acd0_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "2104acd0",
+    "resourceName": "TeliKisaan",
+    "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
-    "useDefault": "manual"
+    "useDefault": "manual",
+    "userPoolGroups": false,
+    "userPoolGroupList": [],
+    "adminQueries": false,
+    "thirdPartyAuth": false,
+    "authProviders": [],
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
   }
 }
