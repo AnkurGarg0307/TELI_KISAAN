@@ -111,7 +111,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="monospace"
                 android:padding="10dp"
-                android:text="Already Have a account ? SignIn"
+                android:text="Don't have an account ? Signup"
                 android:textColor="#000" />
 
         </LinearLayout>
