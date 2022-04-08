@@ -44,10 +44,7 @@ class ChatBot : AppCompatActivity() {
     private fun configureAwsBot() {
       //  try {
 
-//            val awsCred: AwsBasicCredentials = AwsBasicCredentials.create(
-//                "AKIAZUK6UYZ4QQXYD4O6",
-//                "uRGudgmKBlm/GlqiCnqBvFAfxzK8G0IVy6y0cJvl"
-//            )
+//           
             //val awsCredProvider: AwsCredentialsProvider = StaticCredentialsProvider.create(awsCred)
 
 //            val lexClient: LexRuntimeV2Client =
