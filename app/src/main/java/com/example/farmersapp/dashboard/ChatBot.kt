@@ -42,33 +42,30 @@ class ChatBot : AppCompatActivity() {
     }
 
     private fun configureAwsBot() {
-        try {
+      //  try {
 
-            val awsCred: AwsBasicCredentials = AwsBasicCredentials.create(
-                "AKIAZUK6UYZ4QQXYD4O6",
-                "uRGudgmKBlm/GlqiCnqBvFAfxzK8G0IVy6y0cJvl"
-            )
-            val awsCredProvider: AwsCredentialsProvider = StaticCredentialsProvider.create(awsCred)
+//           
+            //val awsCredProvider: AwsCredentialsProvider = StaticCredentialsProvider.create(awsCred)
 
 //            val lexClient: LexRuntimeV2Client =
 //                LexRuntimeV2Client.builder().httpClientBuilder(null).credentialsProvider(awsCredProvider)
 //                    .region(Region.US_EAST_1).build()
-
-            val recognisedReq = getRecognizedTextRequest(
-                "YWKNS26XME",
-                "TSTALIASID",
-                "en_US",
-                UUID.randomUUID().toString(),
-                "What is weather in noida"
-            )
+//
+//            val recognisedReq = getRecognizedTextRequest(
+//                "YWKNS26XME",
+//                "TSTALIASID",
+//                "en_US",
+//                UUID.randomUUID().toString(),
+//                "What is weather in noida"
+//            )
 //            val recognisedRes: RecognizeTextResponse = lexClient.recognizeText(recognisedReq)
 //
 //            recognisedRes.messages().forEach {
 //                Log.d("Bot Reply", it.toString())
 //            }
 
-        }catch (error:IOError){
-            Log.d("Bot Reply", error.toString())
-        }
+//        }catch (error:IOError){
+//            Log.d("Bot Reply", error.toString())
+//        }
     }
 }

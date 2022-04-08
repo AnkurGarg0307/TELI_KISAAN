@@ -59,7 +59,15 @@ class LoginActivity : AppCompatActivity() {
             .userAttribute(AuthUserAttributeKey.name(), username)
             .build()
         Amplify.Auth.signUp(username, pass, options,
-            { Log.i("AuthQuickStart", "Sign up succeeded: $it") },
+            { result ->
+                if (result.isSignUpComplete) {
+                    //signIN(username,pass)
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                } else {
+                    Log.i("AuthQuickstart", "Sign in not complete")
+                }
+            },
             { Log.i("AuthQuickStart", "Sign up error: $it") }
         )
     }
