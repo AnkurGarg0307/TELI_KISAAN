@@ -3,7 +3,6 @@
     package="com.example.farmersapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,10 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersApp.action">
         <activity
+            android:name=".dashboard.CropPrediction"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.FarmersApp" />
-
         <activity
             android:name=".dashboard.ChatBot"
             android:exported="false" />

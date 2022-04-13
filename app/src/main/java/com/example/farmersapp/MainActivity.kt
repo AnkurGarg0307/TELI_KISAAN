@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.farmersapp.dashboard.ChatBot
+import com.example.farmersapp.dashboard.CropPrediction
 import com.example.farmersapp.dashboard.GovernmentSchemas
 import com.example.farmersapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         })
         binding.chatBotCard.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, ChatBot::class.java))
+        })
+        binding.prediction.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, CropPrediction::class.java))
         })
     }
 }
