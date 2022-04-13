@@ -70,7 +70,7 @@ class IntroActivity : AppCompatActivity() {
         // Get Started button click listener
         binding.btnGetStarted.setOnClickListener(View.OnClickListener {
 
-            startActivity( Intent(applicationContext, LoginActivity::class.java))
+            startActivity( Intent(applicationContext, MainActivity::class.java))
             savePrefsData()
             finish()
         })
@@ -142,7 +142,7 @@ class IntroActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (restorePrefData()) {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }
