@@ -7,18 +7,25 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.farmersapp.databinding.ActivitySplashBinding
 
+
 class OpenScreen : AppCompatActivity() {
     lateinit var binding: ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-
+        val sp1 = applicationContext.getSharedPreferences("myPrefs", MODE_PRIVATE)
+        val isLogin = sp1.getBoolean("isLogin", false)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            if(!isLogin) {
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
+            else {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
             finish()
-        }, 4000)
+        }, 2000)
 
 
     }
