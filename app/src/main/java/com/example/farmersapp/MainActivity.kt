@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.farmersapp.dashboard.AboutCrop
 import com.example.farmersapp.dashboard.ChatBot
 import com.example.farmersapp.dashboard.CropPrediction
 import com.example.farmersapp.dashboard.GovernmentSchemas
@@ -18,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.aboutCropCard.setOnClickListener(View.OnClickListener {
+            startActivity(Intent(this, AboutCrop::class.java))
+        })
         binding.schemaCard.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, GovernmentSchemas::class.java))
         })
