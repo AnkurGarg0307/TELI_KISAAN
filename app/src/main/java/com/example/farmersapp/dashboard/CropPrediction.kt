@@ -1,6 +1,5 @@
 package com.example.farmersapp.dashboard
 
-import android.R.attr.data
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -34,7 +33,7 @@ class CropPrediction : AppCompatActivity() {
 
         val colors: ArrayList<Int> = ArrayList()
 
-        for (c in ColorTemplate.JOYFUL_COLORS) {
+        for (c in ColorTemplate.COLORFUL_COLORS) {
             colors.add(c)
         }
 
@@ -43,20 +42,27 @@ class CropPrediction : AppCompatActivity() {
         for (i in map) {
             entries.add(PieEntry(i.value, i.key))
         }
-        val pieDataSet = PieDataSet(entries, "Favourable Crops")
+        val pieDataSet = PieDataSet(entries, "")
         pieDataSet.colors = colors
+        pieDataSet.valueTextSize = 16F
+        pieDataSet.valueTextColor = Color.WHITE
         val pieData = PieData(pieDataSet)
         pieData.setValueFormatter(PercentFormatter())
+
 
 
         binding.cropChart.data = pieData
         binding.cropChart.setUsePercentValues(true)
         binding.cropChart.highlightValues(null)
         binding.cropChart.description.isEnabled = false
+        binding.cropChart.setDrawEntryLabels(false)
+        binding.cropChart.legend.textSize = 16F
+        binding.cropChart.legend.formSize = 16F
+        binding.cropChart.legend.xEntrySpace = 10F
         binding.cropChart.invalidate()
 
         binding.allInputLayout.visibility = View.GONE
-        binding.cropChart.visibility = View.VISIBLE
+        binding.chartLay.visibility = View.VISIBLE
 
     }
 
