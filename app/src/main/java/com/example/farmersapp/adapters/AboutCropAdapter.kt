@@ -13,6 +13,8 @@ import com.example.farmersapp.Description_Activity
 import com.example.farmersapp.R
 import com.example.farmersapp.dashboard.AboutCrop
 import com.example.farmersapp.models.CropItem
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class AboutCropAdapter(private val mList: List<CropItem>): RecyclerView.Adapter<AboutCropAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,9 +29,13 @@ class AboutCropAdapter(private val mList: List<CropItem>): RecyclerView.Adapter<
 
         holder.imageView.setImageResource(ItemsViewModel.image)
 
-        holder.textView.setText(ItemsViewModel.text)
+        holder.textView.setText(ItemsViewModel.name)
         holder.item.setOnClickListener(View.OnClickListener {V->
-            V.context.startActivity(Intent(V.context, Description_Activity::class.java))
+            val intent = Intent(V.context,Description_Activity::class.java)
+            intent.putExtra("N", ItemsViewModel.N)
+            intent.putExtra("P", ItemsViewModel.P)
+            intent.putExtra("K", ItemsViewModel.K)
+            V.context.startActivity(intent)
         })
     }
 
