@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.farmersapp.databinding.ActivityCropPredictionBinding
 import com.example.farmersapp.ml.CropTfliteModel
@@ -17,7 +18,6 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-
 class CropPrediction : AppCompatActivity() {
 
     lateinit var binding: ActivityCropPredictionBinding
@@ -26,7 +26,15 @@ class CropPrediction : AppCompatActivity() {
         binding = ActivityCropPredictionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.predictionBtn.setOnClickListener(View.OnClickListener { predict() })
+        binding.predictionBtn.setOnClickListener {
+            predict()
+            hideKeyboard(it)
+        }
+    }
+
+    private fun hideKeyboard(it: View) {
+        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(it.windowToken, 0)
     }
 
     private fun setPieChart(map: MutableMap<String, Float>) {
@@ -34,6 +42,21 @@ class CropPrediction : AppCompatActivity() {
         val colors: ArrayList<Int> = ArrayList()
 
         for (c in ColorTemplate.COLORFUL_COLORS) {
+            colors.add(c)
+        }
+        for (c in ColorTemplate.JOYFUL_COLORS) {
+            colors.add(c)
+        }
+        for (c in ColorTemplate.MATERIAL_COLORS) {
+            colors.add(c)
+        }
+        for (c in ColorTemplate.PASTEL_COLORS) {
+            colors.add(c)
+        }
+        for (c in ColorTemplate.LIBERTY_COLORS) {
+            colors.add(c)
+        }
+        for (c in ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(c)
         }
 
@@ -59,6 +82,7 @@ class CropPrediction : AppCompatActivity() {
         binding.cropChart.legend.textSize = 16F
         binding.cropChart.legend.formSize = 16F
         binding.cropChart.legend.xEntrySpace = 10F
+        binding.cropChart.legend.isWordWrapEnabled = true
         binding.cropChart.invalidate()
 
         binding.allInputLayout.visibility = View.GONE
@@ -67,6 +91,7 @@ class CropPrediction : AppCompatActivity() {
     }
 
     private fun predict() {
+
         val model = CropTfliteModel.newInstance(this)
 
 // Creates inputs for reference.

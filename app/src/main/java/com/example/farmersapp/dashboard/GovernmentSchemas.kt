@@ -1,13 +1,18 @@
 package com.example.farmersapp.dashboard
 
 import android.os.Bundle
+import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.farmersapp.R
+import com.example.farmersapp.adapters.AboutCropAdapter
 import com.example.farmersapp.adapters.GovtSchemeAdapter
+import com.example.farmersapp.models.CropItem
 import com.example.farmersapp.models.SchemeItem
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class GovernmentSchemas : AppCompatActivity() {
@@ -20,12 +25,26 @@ class GovernmentSchemas : AppCompatActivity() {
 
         val data = ArrayList<SchemeItem>()
 
-        for (i in 1..5) {
-            data.add(SchemeItem(R.drawable.bot_icon, "Item " + i, "hello" + i))
-        }
+        val db = Firebase.firestore
+        db.collection("policies")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    data.add(
+                        SchemeItem(
+                            document.data["image"].toString(),
+                            document.data["name"].toString(),
+                            document.data["desc"].toString()
 
-        val adapter = GovtSchemeAdapter(data)
+                        )
+                    )
+                }
+                val adapter = GovtSchemeAdapter(data)
+                recyclerview.adapter = adapter
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "$exception", Toast.LENGTH_LONG).show()
+            }
 
-        recyclerview.adapter = adapter
     }
 }

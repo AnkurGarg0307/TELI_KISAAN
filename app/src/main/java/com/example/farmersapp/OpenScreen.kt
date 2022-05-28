@@ -15,14 +15,14 @@ class OpenScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val sp1 = applicationContext.getSharedPreferences("myPrefs", MODE_PRIVATE)
-        val isLogin = sp1.getBoolean("isLogin", false)
+        val isOpened = sp1.getBoolean("isIntroOpened", false)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if(!isLogin) {
-                startActivity(Intent(this, LoginActivity::class.java))
+            if(!isOpened) {
+                startActivity(Intent(this, IntroActivity::class.java))
             }
             else {
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
             }
             finish()
         }, 2000)

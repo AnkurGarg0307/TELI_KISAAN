@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.farmersapp.R
 import com.example.farmersapp.models.SchemeItem
 
-class GovtSchemeAdapter(private val mList: List<SchemeItem>) : RecyclerView.Adapter<GovtSchemeAdapter.ViewHolder>() {
+class GovtSchemeAdapter(private val mList: List<SchemeItem>) :
+    RecyclerView.Adapter<GovtSchemeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -18,12 +20,11 @@ class GovtSchemeAdapter(private val mList: List<SchemeItem>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val ItemsViewModel = mList[position]
+        val itemsViewModel = mList[position]
 
-        holder.imageView.setImageResource(ItemsViewModel.image)
-
-        holder.textView.setText(ItemsViewModel.text)
-        holder.description.setText(ItemsViewModel.description)
+        Glide.with(holder.itemView.context).load(itemsViewModel.image).into(holder.imageView)
+        holder.textView.text = itemsViewModel.text
+        holder.description.text = itemsViewModel.description
 
     }
 

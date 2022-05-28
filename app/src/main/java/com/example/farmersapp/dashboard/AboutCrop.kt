@@ -1,4 +1,3 @@
-
 package com.example.farmersapp.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
@@ -14,30 +13,38 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class AboutCrop : AppCompatActivity() {
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_crop)
-            val recyclerview = findViewById<RecyclerView>(R.id.recyclerView2)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_crop)
+        val recyclerview = findViewById<RecyclerView>(R.id.recyclerView2)
 
-            recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerview.layoutManager = LinearLayoutManager(this)
 
-            val db = Firebase.firestore
-            val data = ArrayList<CropItem>()
-            db.collection("crops")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        data.add(CropItem(R.drawable.bot_icon,document.data.get("name").toString() ,document.data.get("N").toString(),document.data.get("P").toString(),document.data.get("K").toString()))
+        val db = Firebase.firestore
+        val data = ArrayList<CropItem>()
+        db.collection("crops")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    data.add(
+                        CropItem(
+                            document.data["image"].toString(),
+                            document.data["name"].toString(),
+                            document.data["N"].toString(),
+                            document.data["P"].toString(),
+                            document.data["K"].toString(),
+                            document.data["pesticide"].toString(),
+                            document.data["season"].toString()
+                        )
+                    )
 //                        Toast.makeText(this, "${document.id}=> ${document.data}", Toast.LENGTH_SHORT).show()
-                    }
-                    val adapter = AboutCropAdapter(data)
-                    recyclerview.adapter = adapter
                 }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(this, "$exception", Toast.LENGTH_LONG).show()
-                }
-
-
+                val adapter = AboutCropAdapter(data)
+                recyclerview.adapter = adapter
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "$exception", Toast.LENGTH_LONG).show()
+            }
 
 
     }

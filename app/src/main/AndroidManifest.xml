@@ -12,7 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersApp.action">
         <activity
-            android:name=".Description_Activity"
+            android:name=".dashboard.WeatherInfo"
+            android:exported="false" />
+        <activity
+            android:name=".dashboard.SoilMoisture"
+            android:exported="false"
+            android:label="@string/title_activity_soil_moisture"
+            android:theme="@style/Theme.FarmersApp.action.NoActionBar" />
+        <activity
+            android:name=".DescriptionActivity"
             android:exported="false" />
         <activity
             android:name=".dashboard.AboutCrop"

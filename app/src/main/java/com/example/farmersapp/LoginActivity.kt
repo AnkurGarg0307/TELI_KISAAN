@@ -28,59 +28,74 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.loginSignup.setOnClickListener(View.OnClickListener {
-            if(isLogin) {
+            if (isLogin) {
                 signIn(binding.nameInput.text.toString(), binding.passwordInput.text.toString())
-            }
-            else {
-                if(binding.passwordInput.text.toString().equals(binding.confirmPasswordInput.text.toString())) {
+            } else {
+                if (binding.passwordInput.text.toString()
+                        .equals(binding.confirmPasswordInput.text.toString())
+                ) {
                     createAccount(
                         binding.nameInput.text.toString(),
                         binding.passwordInput.text.toString()
                     )
-                }
-                else {
-                    Toast.makeText(baseContext, "Confirm Password doesn't match Password",Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(
+                        baseContext,
+                        "Confirm Password doesn't match Password",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         })
         binding.ChangeHaveOrNot.setOnClickListener(View.OnClickListener {
-            if(isLogin) {
-                binding.confirmPassword.visibility=View.VISIBLE
-                binding.loginSignup.setText("SIGNUP")
-                binding.ChangeHaveOrNot.setText("Login")
-                binding.haveOrNot.setText("Already have an account?")
-                binding.forgot.visibility=View.GONE
-                binding.confirmPassword.visibility=View.VISIBLE
-                isLogin=false
-            }
-            else {
-                binding.forgot.visibility=View.VISIBLE
-                binding.confirmPassword.visibility=View.GONE
-                binding.loginSignup.setText("LOGIN")
-                binding.ChangeHaveOrNot.setText("SignUp")
-                binding.haveOrNot.setText("Don't have an account?")
-                isLogin=true
+            if (isLogin) {
+                binding.confirmPassword.visibility = View.VISIBLE
+                binding.loginSignup.text = "SIGNUP"
+                binding.ChangeHaveOrNot.text = "Login"
+                binding.haveOrNot.text = "Already have an account?"
+                binding.forgot.visibility = View.GONE
+                binding.confirmPassword.visibility = View.VISIBLE
+                isLogin = false
+            } else {
+                binding.forgot.visibility = View.VISIBLE
+                binding.confirmPassword.visibility = View.GONE
+                binding.loginSignup.text = "LOGIN"
+                binding.ChangeHaveOrNot.text = "SignUp"
+                binding.haveOrNot.text = "Don't have an account?"
+                isLogin = true
             }
         })
     }
+
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
+        if (currentUser != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
+
     private fun createAccount(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    if(user!=null) {
+                    if (user != null) {
                         savePrefsData()
-                        Toast.makeText(baseContext, "Authentication Created successful.",Toast.LENGTH_SHORT).show()
-                        startActivity( Intent(this, MainActivity::class.java))
+                        Toast.makeText(
+                            baseContext,
+                            "Authentication Created successful.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     }
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
@@ -90,18 +105,25 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    if(user!=null) {
+                    if (user != null) {
                         savePrefsData()
-                        Toast.makeText(baseContext, "Authentication SuccessFull.",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            baseContext,
+                            "Authentication SuccessFull.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                     }
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
+
     private fun savePrefsData() {
         val pref = applicationContext.getSharedPreferences("myPrefs", MODE_PRIVATE)
         val editor = pref.edit()

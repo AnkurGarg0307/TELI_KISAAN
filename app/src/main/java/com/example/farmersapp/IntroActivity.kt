@@ -70,7 +70,7 @@ class IntroActivity : AppCompatActivity() {
         // Get Started button click listener
         binding.btnGetStarted.setOnClickListener(View.OnClickListener {
 
-            startActivity( Intent(applicationContext, MainActivity::class.java))
+            startActivity( Intent(applicationContext, LoginActivity::class.java))
             savePrefsData()
             finish()
         })
@@ -117,17 +117,16 @@ class IntroActivity : AppCompatActivity() {
         val pref = applicationContext.getSharedPreferences("myPrefs", MODE_PRIVATE)
         val editor = pref.edit()
         editor.putBoolean("isIntroOpened", true)
-        editor.putBoolean("isLogin", true)
         editor.apply()
     }
 
     private fun restorePrefData(): Boolean {
-//        val pref = applicationContext.getSharedPreferences(
-//            "myPrefs",
-//            MODE_PRIVATE
-//        )
-//        return pref.getBoolean("isIntroOpened", false)
-        return false
+        val pref = applicationContext.getSharedPreferences(
+            "myPrefs",
+            MODE_PRIVATE
+        )
+        return pref.getBoolean("isIntroOpened", false)
+
     }
 
     // show the GET STARTED Button and hide the indicator and the next button
@@ -143,7 +142,7 @@ class IntroActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (restorePrefData()) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }
