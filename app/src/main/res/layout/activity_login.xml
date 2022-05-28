@@ -5,10 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green"
-    android:paddingLeft="0dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME FARMER"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/materialCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -23,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
@@ -36,6 +45,7 @@
             android:orientation="vertical"
             android:paddingStart="35dp"
             android:paddingTop="15dp"
+            android:background="#fff"
             android:paddingEnd="35dp"
             android:paddingBottom="150dp">
 
@@ -85,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/confirmPassword"
@@ -106,15 +116,14 @@
                     android:id="@+id/forgot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="end"
                     android:layout_gravity="end"
-                    android:fontFamily="monospace"
+                    android:fontFamily="sans-serif"
                     android:padding="5dp"
                     android:text="Forgot password"
-                    android:visibility="visible"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                    android:visibility="visible" />
             </LinearLayout>
-
-
 
 
             <com.google.android.material.button.MaterialButton
@@ -143,8 +152,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="0dp"
                     android:clickable="false"
-                    android:fontFamily="monospace"
-                    android:minHeight="48dp"
+                    android:fontFamily="sans-serif"
                     android:padding="10dp"
                     android:text="Don't have an account?"
                     android:textColor="#000" />
@@ -154,17 +162,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="0dp"
-                    android:clickable="true"
-                    android:fontFamily="monospace"
-                    android:minHeight="48dp"
-                    android:paddingLeft="0dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="10dp"
                     android:text="SignUp"
                     android:textColor="#000"
-                    android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -176,5 +177,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#fff"
+        android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

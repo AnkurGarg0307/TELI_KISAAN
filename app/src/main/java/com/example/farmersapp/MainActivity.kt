@@ -9,7 +9,7 @@ import com.example.farmersapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         }
         binding.moistureCard.setOnClickListener {
             startActivity(Intent(this, SoilMoisture::class.java))
+        }
+        binding.weatherCard.setOnClickListener {
+            startActivity(Intent(this, WeatherInfo::class.java))
         }
     }
 }
